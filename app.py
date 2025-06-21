@@ -1,11 +1,15 @@
 import os
+import json
 from datetime import datetime
 from flask import Flask, request, jsonify, send_from_directory
 import numpy as np
 import cv2
 from tensorflow.keras.models import load_model
 from flask_cors import CORS
-from treatments import treatments  # 🟢 استدعاء قاموس العلاجات من ملف خارجي
+
+# تحميل قاموس العلاجات من ملف JSON
+with open('treatments.json', 'r', encoding='utf-8') as f:
+    treatments = json.load(f)
 
 app = Flask(__name__)
 CORS(app)

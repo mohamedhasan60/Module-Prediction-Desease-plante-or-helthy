@@ -1,2 +1,15 @@
+[build]
+packages = ["python311", "libglvnd"]
+
 [phases.setup]
-nixPkgs = ['libGL', 'libGLU', 'mesa']
+nixPkgs = ["python311", "gcc", "libGL"]
+
+[phases.install]
+cmds = [
+  "python3.11 -m venv /opt/venv",
+  ". /opt/venv/bin/activate",
+  "pip install -r requirements.txt"
+]
+
+[start]
+cmd = "gunicorn app:app"

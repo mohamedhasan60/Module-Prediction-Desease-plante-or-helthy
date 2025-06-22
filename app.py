@@ -11,18 +11,6 @@ from flask_cors import CORS
 with open('treatments.json', 'r', encoding='utf-8') as f:
     treatments = json.load(f)
 
-@app.route('/', methods=['GET'])
-def index():
-    return '''
-        <h2>🌿 Plant Disease Prediction API</h2>
-        <p>Send a <b>POST</b> request to <code>/predict_health</code> with an image in JPEG format.</p>
-        <p>Example using <code>curl</code>:</p>
-        <pre>
-curl -X POST -H "Content-Type: image/jpeg" --data-binary "@your_image.jpg" https://web-production-5ff01.up.railway.app/predict_health
-        </pre>
-    '''
-
-
 app = Flask(__name__)
 CORS(app)
 
